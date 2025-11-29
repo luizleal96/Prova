@@ -1,0 +1,21 @@
+{
+  "name": "provaP2",
+  "version": "1.0.0",
+  "main": "provaP2/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./provaP2/index.js",
+    "dev": "nodemon ./provaP2/index.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
