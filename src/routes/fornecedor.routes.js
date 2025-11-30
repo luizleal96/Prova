@@ -1,12 +1,12 @@
 import { Router } from "express";
-import cadastroController from "../controller/cadastro.controller.js";
+import fornecedorController from "../controller/fornecedor.controller.js";
 
-const cadastroRouter = Router();
+const fornecedorRouter = Router();
 
-cadastroRouter.post("/cadastro", cadastroController.createCadastroController);
-cadastroRouter.get("/cadastro", cadastroController.findAllCadastroController);
-cadastroRouter.get("/cadastro/:id", cadastroController.findCadastroByIdController);
-cadastroRouter.put("/cadastro/:id", cadastroController.updateCadastroController);
-cadastroRouter.delete("/cadastro/:id", cadastroController.deleteCadastroController);
+fornecedorRouter.post("/fornecedor", fornecedorController.createfornecedorController);
+fornecedorRouter.get("/fornecedor", fornecedorController.findAllfornecedorController);
+fornecedorRouter.get("/fornecedor/:id", fornecedorController.findfornecedorByIdController);
+fornecedorRouter.put("/fornecedor/:id", fornecedorController.updatefornecedorController);
+fornecedorRouter.delete("/fornecedor/:id", fornecedorController.deletefornecedorController);
 
-export default cadastroRouter;
+export default fornecedorRouter;

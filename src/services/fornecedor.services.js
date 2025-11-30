@@ -1,36 +1,36 @@
-import cadastroRepository from "../repositories/cadastro.repository.js";
+import fornecedorRepository from "../repositories/fornecedor.repository.js";
 
-async function createCadastroService(cadastroData) {
-    const cadastro = await cadastroRepository.createCadastroRepository(cadastroData);
-    if (!cadastro) throw new Error("Erro ao criar novo cadastro!");
-    return cadastro;
+async function createfornecedorService(fornecedorData) {
+    const fornecedor = await fornecedorRepository.createfornecedorRepository(fornecedorData);
+    if (!fornecedor) throw new Error("Erro ao criar novo fornecedor!");
+    return fornecedor;
 }
 
-async function findAllCadastroService() {
-    return await cadastroRepository.findAllCadastroRepository();
+async function findAllfornecedorService() {
+    return await fornecedorRepository.findAllfornecedorRepository();
 }
 
-async function findCadastroByIdService(id) {
+async function findfornecedorByIdService(id) {
     // retorna objeto ou null (não lança exceção) — controlador decide o status HTTP
-    return await cadastroRepository.findCadastroByIdRepository(id);
+    return await fornecedorRepository.findfornecedorByIdRepository(id);
 }
 
-async function updateCadastroService(id, cadastroData) {
+async function updatefornecedorService(id, fornecedorData) {
     // repository já retorna null se não existir
-    const cadastroAtualizado = await cadastroRepository.updateCadastroRepository(id, cadastroData);
-    return cadastroAtualizado;
+    const fornecedorAtualizado = await fornecedorRepository.updatefornecedorRepository(id, fornecedorData);
+    return fornecedorAtualizado;
 }
 
-async function deleteCadastroService(id) {
+async function deletefornecedorService(id) {
     // retorna true se removido, false se não encontrado
-    const removed = await cadastroRepository.deleteCadastroRepository(id);
+    const removed = await fornecedorRepository.deletefornecedorRepository(id);
     return removed;
 }
 
 export default {
-    createCadastroService,
-    findAllCadastroService,
-    findCadastroByIdService,
-    updateCadastroService,
-    deleteCadastroService
+    createfornecedorService,
+    findAllfornecedorService,
+    findfornecedorByIdService,
+    updatefornecedorService,
+    deletefornecedorService
 };

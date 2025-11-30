@@ -18,12 +18,12 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CR
 // inicializa tabela de forma serializada
 db.serialize(() => {
     db.run(`
-        CREATE TABLE IF NOT EXISTS cadastro (
+        CREATE TABLE IF NOT EXISTS fornecedor (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            login TEXT NOT NULL,
-            email TEXT,
-            senha TEXT,
-            foto TEXT
+            cnpj TEXT NOT NULL,
+            nome TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE
+            
         )
     `, (err) => {
         if (err) console.error("Erro ao criar tabela:", err.message);

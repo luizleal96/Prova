@@ -1,11 +1,11 @@
 {
   "name": "provaP2",
   "version": "1.0.0",
-  "main": "provaP2/index.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./provaP2/index.js",
-    "dev": "nodemon ./provaP2/index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
