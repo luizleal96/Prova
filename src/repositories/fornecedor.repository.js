@@ -2,20 +2,20 @@ import { run, get, all } from "../config/database.js";
 
 /**
  * Cria um novo fornecedor
- * @param {Object} fornecedorData - { login, email, senha, foto }
- * @returns {Promise<Object>} fornecedor criado (sem senha)
+ * @param {Object} fornecedorData - 
+ * @returns {Promise<Object>} 
  */
 export async function createfornecedorRepository(fornecedorData) {
-    const { login, email = null, senha, foto = null } = fornecedorData;
+    const { cnpj, email = null, nome = null } = fornecedorData;
 
     const result = await run(
-        `INSERT INTO fornecedor (login, email, senha, foto) VALUES (?, ?, ?, ?)`,
-        [login, email, senha, foto]
+        `INSERT INTO fornecedor (cnpj, email, nome) VALUES (?, ?, ?)`,
+        [cnpj, email, nome]
     );
 
     // retorna o registro criado sem a senha
     return await get(
-        `SELECT id, login, email, foto FROM fornecedor WHERE id = ?`,
+        `SELECT id, cnpj, email, nome FROM fornecedor WHERE id = ?`,
         [result.lastID]
     );
 }
@@ -25,7 +25,7 @@ export async function createfornecedorRepository(fornecedorData) {
  * @returns {Promise<Array>}
  */
 export async function findAllfornecedorRepository() {
-    return await all(`SELECT id, login, email, foto FROM fornecedor`);
+    return await all(`SELECT id, cnpj, email, nome FROM fornecedor`);
 }
 
 /**
@@ -43,8 +43,8 @@ export async function findfornecedorByIdRepository(id) {
 /**
  * Atualiza fornecedor por ID
  * @param {number} id
- * @param {Object} fornecedorData - { login, email, senha, foto } (campos opcionais)
- * @returns {Promise<Object|null>} Registro atualizado (sem senha) ou null se não encontrado
+ * @param {Object} fornecedorData 
+ * @returns {Promise<Object|null>} 
  */
 export async function updatefornecedorRepository(id, fornecedorData) {
     // busca existente (inclui senha caso precise manter)
@@ -62,7 +62,7 @@ export async function updatefornecedorRepository(id, fornecedorData) {
 
     if (result.changes === 0) return null;
 
-    return await get(`SELECT id, email, nome, FROM fornecedor WHERE id = ?`, [id]);
+    return await get(`SELECT id, cnpj, email, nome FROM fornecedor WHERE id = ?`, [id]);
 }
 
 /**

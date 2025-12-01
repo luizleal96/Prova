@@ -6,13 +6,13 @@ const validateId = (id) => {
 };
 
 async function createfornecedorController(req, res) {
-    const { login, senha, email, foto } = req.body || {};
-    if (!login || !senha) {
-        return res.status(400).json({ error: "login e senha são obrigatórios" });
+    const { cnpj, nome, email } = req.body || {};
+    if (!cnpj || !nome) {
+        return res.status(400).json({ error: "Cnpj e Nome são obrigatórios" });
     }
 
     try {
-        const fornecedor = await fornecedorService.createfornecedorService({ login, senha, email, foto });
+        const fornecedor = await fornecedorService.createfornecedorService({ cnpj, nome, email });
         return res.status(201).json(fornecedor);
     } catch (error) {
         return res.status(500).json({ error: error?.message ?? "Erro ao criar fornecedor" });
@@ -24,7 +24,7 @@ async function findAllfornecedorController(req, res) {
         const fornecedors = await fornecedorService.findAllfornecedorService();
         return res.status(200).json(fornecedors);
     } catch (error) {
-        return res.status(500).json({ error: error?.message ?? "Erro ao listar fornecedors" });
+        return res.status(500).json({ error: error?.message ?? "Erro ao listar fornecedores" });
     }
 }
 
